@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   post '/games', to: 'games#create'
 
+  get '/players', to: 'players#index'
+  post '/players', to: 'players#create'
+
 end
