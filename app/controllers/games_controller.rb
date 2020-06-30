@@ -24,6 +24,7 @@ class GamesController < ApplicationController
     player1.save!
     team_a.save!
     team_b.save!
+    
     render json: GameSerializer.new(game)
   end
 
