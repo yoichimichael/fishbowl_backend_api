@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   
   def index
     games = Game.all
-    render json: GameSerializer.new(games)
+    render json: GameSerializer.new(games).to_serialized_json
   end
 
   def show
@@ -25,7 +25,7 @@ class GamesController < ApplicationController
     team_a.save!
     team_b.save!
     
-    render json: GameSerializer.new(game)
+    render json: GameSerializer.new(game).to_serialized_json
   end
 
   private
