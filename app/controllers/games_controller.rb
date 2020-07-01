@@ -16,12 +16,12 @@ class GamesController < ApplicationController
     game = Game.new(join_code: game_params[1])
     team_a = Team.new(team_letter: "a", game: game)
     team_b = Team.new(team_letter: "b", game: game)
-    player1 = Player.new(name: game_params[0], game: game, team: team_a)
+    player = Player.new(name: game_params[0], game: game, team: team_a)
 
-    game.host = player1
+    game.host = player
 
     game.save!
-    player1.save!
+    player.save!
     team_a.save!
     team_b.save!
     
