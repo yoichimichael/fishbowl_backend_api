@@ -6,7 +6,15 @@ class GameSerializer
 
   def to_serialized_json
     @game.to_json(:include => {
-      :host => {:except => [:created_at, :updated_at]},
+      :host => {
+        :include => [
+          :game => {:except => [:created_at, :updated_at]}, 
+          :team => {:except => [:created_at, :updated_at]}
+        ], 
+        :except => [
+          :created_at, :updated_at
+        ]
+      },
       :teams => {:except => [:created_at, :updated_at]},
       :players => {:except => [:created_at, :updated_at]}
     }, :except => [:created_at, :updated_at])
