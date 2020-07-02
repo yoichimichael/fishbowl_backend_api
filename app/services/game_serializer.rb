@@ -16,7 +16,13 @@ class GameSerializer
         ]
       },
       :teams => {:except => [:created_at, :updated_at]},
-      :players => {:except => [:created_at, :updated_at]}
+      :players => {
+        :include => [
+          :game => {:except => [:created_at, :updated_at]}, 
+          :team => {:except => [:created_at, :updated_at]}
+        ], 
+        :except => [:created_at, :updated_at]
+      }
     }, :except => [:created_at, :updated_at])
   end
 

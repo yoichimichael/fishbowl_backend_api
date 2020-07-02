@@ -6,6 +6,8 @@ class GamesController < ApplicationController
   end
 
   def show
+    game = Game.find(params[:id])
+    render json: GameSerializer.new(game).to_serialized_json
   end
 
   #new/save player-host with game creation
