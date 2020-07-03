@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   get '/players', to: 'players#index'
   post '/players', to: 'players#create'
-  # get '/players/:id', to: 'players#show'
   patch '/players/:id', to: 'players#update'
+
+  patch '/teams', to: 'teams#update'
 
 end

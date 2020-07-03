@@ -1,24 +1,18 @@
 class TeamsController < ApplicationController
   
-  def index
-    teams = Game.all
-    render json: TeamSerializer.new(teams)
-  end
-
-
-  #new/save player-host with game creation
-  #and create two teams
-
-  def create
-    team = Team.new(team_params)
-    team.save
-    render json: team
+  def update
+    team_a = Team.find(team_params[0])
+    team_b = Team.find(team_params[1])
+    team_a.update(team_name: team_params[2])
+    team_b.update(team_name: team_params[3])
+    team_a.save
+    team_b.save
   end
 
   private
 
   def team_params
-    params.require(:team).permit(:team_letter, :team_name, :score, :game_id)
+    params.require([:team_a_id, :team_b_id, :team_a_name, :team_b_name])
   end
   
 end
