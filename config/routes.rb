@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   patch '/teams', to: 'teams#update'
 
+  post '/submissions', to: 'submissions#create'
+
 end

@@ -1,5 +1,7 @@
 class Player < ApplicationRecord
   
+  has_many :submissions
+
   # could also make any of the below optional
   # belongs_to :team, optional: true
   
