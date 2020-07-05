@@ -13,13 +13,13 @@ class SubmissionsController < ApplicationController
     # round created after all players have submitted cards
     # first performer is randomized
     if game.submissions.size == game.players.size * game.cards_per_player
-      round = Round.create(name: "Charades", game: game, performer: game.players.sample)
+      round = Round.create(name: "Taboo", game: game, performer: game.players.sample)
       game.submissions.each{ |submission| round.submissions << submission }
     end
 
     render json: SubmissionSerializer.new(player.submissions).to_serialized_json 
 
-    byebug
+    # byebug
   end
 
   private
