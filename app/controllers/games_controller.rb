@@ -22,6 +22,9 @@ class GamesController < ApplicationController
 
     game.host = player
 
+    # hard-coding card num; later, will add player-choice 
+    game.cards_per_player = 2 
+
     game.save!
     player.save!
     team_a.save!
