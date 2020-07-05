@@ -22,7 +22,8 @@ class GameSerializer
           :team => {:except => [:created_at, :updated_at]}
         ], 
         :except => [:created_at, :updated_at]
-      }
+      },
+      :rounds => {:except => [:created_at, :updated_at]}
     }, :except => [:created_at, :updated_at])
   end
 
