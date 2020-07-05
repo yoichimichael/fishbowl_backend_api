@@ -9,6 +9,9 @@
 Game.destroy_all
 Player.destroy_all
 Team.destroy_all
+Round.destroy_all
+Submission.destroy_all
+InPlayCard.destroy_all
 
 # issue with seeding; had to comment out belongs_to association in Game class/ issue solved; look into optional associations Rails 5
 
@@ -38,26 +41,24 @@ player2 = Player.create!(name: "Yoshiko", game_id: game1.id, team_id: team_a.id)
 player3 = Player.create!(name: "Luis", game_id: game1.id, team_id: team_b.id)
 player4 = Player.create!(name: "Donna", game_id: game1.id, team_id: team_b.id)
 
+round1 = Round.create!(name: "Taboo", game: game1, performer: player1)
+round2 = Round.create!(name: "Charades", game: game1, performer: player2)
+round3 = Round.create!(name: "One Word", game: game1, performer: player3)
 
-# team_a = Team.create!(team_letter: "a", game_id: game1.id)
-# team_b = Team.create!(team_letter: "b", game_id: game1.id)
+submission1 = Submission.create!(content: "dog", player: player1, game: game1)
+submission2 = Submission.create!(content: "cat", player: player1, game: game1)
+submission3 = Submission.create!(content: "watermelon", player: player2, game: game1)
+submission4 = Submission.create!(content: "the sky", player: player2, game: game1)
+submission5 = Submission.create!(content: "helicopters", player: player3, game: game1)
+submission6 = Submission.create!(content: "a long walk", player: player3, game: game1)
+submission7 = Submission.create!(content: "james bond", player: player4, game: game1)
+submission8 = Submission.create!(content: "horror films", player: player4, game: game1)
 
-# player1 = Player.create!(name: "Tarik", game_id: game1.id, team_id: team_a.id)
-# player2 = Player.create!(name: "Yoshiko", game_id: game1.id, team_id: team_a.id)
-# player3 = Player.create!(name: "Luis", game_id: game1.id, team_id: team_b.id)
-# player4 = Player.create!(name: "Donna", game_id: game1.id, team_id: team_b.id)
-
-# game1.update(host_id: player1.id)
-# game2.update(host_id: player2.id)
-# game3.update(host_id: player3.id)
-# game4.update(host_id: player4.id)
-
-# player1.update(game_id: game1.id)
-# player2.update(game_id: game1.id)
-# player3.update(game_id: game1.id)
-# player4.update(game_id: game1.id)
-
-# player1.update(team_id: team_a.id)
-# player2.update(team_id: team_a.id)
-# player3.update(team_id: team_b.id)
-# player4.update(team_id: team_b.id)
+InPlayCard.create!(round: round1, submission: submission1)
+InPlayCard.create!(round: round1, submission: submission2)
+InPlayCard.create!(round: round1, submission: submission3)
+InPlayCard.create!(round: round1, submission: submission4)
+InPlayCard.create!(round: round1, submission: submission5)
+InPlayCard.create!(round: round1, submission: submission6)
+InPlayCard.create!(round: round1, submission: submission7)
+InPlayCard.create!(round: round1, submission: submission8)
