@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 
   post '/submissions', to: 'submissions#create'
 
+  patch '/rounds/:id', to: 'rounds#update'
+
 end
