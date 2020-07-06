@@ -6,6 +6,12 @@ class RoundsController < ApplicationController
     round.save
   end
 
+  def countdown
+    round = Round.find(params[:id])
+    round.clock -= 1 
+    round.save
+  end
+
   def end_turn
     round = Round.find(params[:id])
     round.turn_part = "end"
