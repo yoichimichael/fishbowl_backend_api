@@ -1,8 +1,14 @@
 class RoundsController < ApplicationController
 
-  def update
+  def start_turn
     round = Round.find(params[:id])
-    round.in_play = true
+    round.turn_part = "play"
+    round.save
+  end
+
+  def end_turn
+    round = Round.find(params[:id])
+    round.turn_part = "end"
     round.save
   end
 
