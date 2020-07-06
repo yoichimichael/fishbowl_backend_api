@@ -41,9 +41,9 @@ player2 = Player.create!(name: "Yoshiko", game_id: game1.id, team_id: team_a.id)
 player3 = Player.create!(name: "Luis", game_id: game1.id, team_id: team_b.id)
 player4 = Player.create!(name: "Donna", game_id: game1.id, team_id: team_b.id)
 
-round1 = Round.create!(name: "Taboo", game: game1, performer: player1)
-round2 = Round.create!(name: "Charades", game: game1, performer: player2)
-round3 = Round.create!(name: "One Word", game: game1, performer: player3)
+round1 = Round.create!(name: "Taboo", in_play: false, game: game1, performer: player1)
+round2 = Round.create!(name: "Charades", in_play: false, game: game1, performer: player2)
+round3 = Round.create!(name: "One Word", in_play: false, game: game1, performer: player3)
 
 submission1 = Submission.create!(content: "dog", player: player1, game: game1)
 submission2 = Submission.create!(content: "cat", player: player1, game: game1)
