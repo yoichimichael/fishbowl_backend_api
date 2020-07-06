@@ -23,7 +23,11 @@ class GameSerializer
         ], 
         :except => [:created_at, :updated_at]
       },
-      :rounds => {:except => [:created_at, :updated_at]}
+      :rounds => {
+        :include => [
+          :submissions => {:except => [:created_at, :updated_at]}
+        ],
+        :except => [:created_at, :updated_at]}
     }, :except => [:created_at, :updated_at])
   end
 
