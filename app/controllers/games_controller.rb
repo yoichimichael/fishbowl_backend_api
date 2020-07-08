@@ -28,8 +28,8 @@ class GamesController < ApplicationController
   def create
     # byebug
     game = Game.new(join_code: game_params[1])
-    team_a = Team.new(team_letter: "a", game: game)
-    team_b = Team.new(team_letter: "b", game: game)
+    team_a = Team.new(team_letter: "a", game: game, score: 0)
+    team_b = Team.new(team_letter: "b", game: game, score: 0)
     player = Player.new(name: game_params[0], game: game, team: team_a)
 
     game.host = player
