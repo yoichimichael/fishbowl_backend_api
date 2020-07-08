@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/games', to: 'games#index'
   get '/games/:id', to: 'games#show'
   post '/games', to: 'games#create'
+  patch '/games/:id/flash', to: 'games#flash'
+  patch '/games/:id/unflash', to: 'games#unflash'
 
   get '/players', to: 'players#index'
   post '/players', to: 'players#create'

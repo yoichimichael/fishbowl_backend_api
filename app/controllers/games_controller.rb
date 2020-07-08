@@ -10,6 +10,18 @@ class GamesController < ApplicationController
     render json: GameSerializer.new(game).to_serialized_json
   end
 
+  def flash
+    game = Game.find(params[:id])
+    game.card_flash = game_params[2]
+    game.save!
+  end
+
+  def unflash
+    game = Game.find(params[:id])
+    game.card_flash = nil
+    game.save!
+  end
+
   #new/save player-host with game creation
   #and create two teams
 
@@ -36,7 +48,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require([:host_name, :join_code])
+    params.require([:host_name, :join_code, :flash_card])
   end
   
 end
