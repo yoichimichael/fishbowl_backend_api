@@ -12,8 +12,13 @@ class GamesController < ApplicationController
 
   def flash
     game = Game.find(params[:id])
+    team = Team.find(game_params[3])
+
     game.card_flash = game_params[2]
+    team.score += 1
+
     game.save!
+    team.save!
   end
 
   def unflash
@@ -35,7 +40,7 @@ class GamesController < ApplicationController
     game.host = player
 
     # hard-coding card num; later, will add player-choice 
-    game.cards_per_player = 2 
+    game.cards_per_player = 4 
 
     game.save!
     player.save!
@@ -48,7 +53,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require([:host_name, :join_code, :flash_card])
+    params.require([:host_name, :join_code, :flash_card, :team_id])
   end
   
 end

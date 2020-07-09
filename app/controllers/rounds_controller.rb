@@ -14,7 +14,7 @@ class RoundsController < ApplicationController
 
   def end_turn
     round = Round.find(params[:id])
-    round.clock = 5
+    round.clock = 15
     round.turn_part = "end"
     round.save
   end

@@ -13,7 +13,7 @@ class SubmissionsController < ApplicationController
     # round created after all players have submitted cards
     # first performer is randomized
     if game.submissions.size == game.players.size * game.cards_per_player
-      round = Round.create!(name: "Taboo", turn_part: "lobby", game: game, performer: game.players.sample, clock: 5)
+      round = Round.create!(name: "Taboo", turn_part: "lobby", game: game, performer: game.players.sample, clock: 15)
       game.submissions.each{ |submission| round.submissions << submission }
     end
 
