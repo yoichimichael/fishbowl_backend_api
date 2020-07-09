@@ -12,13 +12,16 @@ class GamesController < ApplicationController
 
   def flash
     game = Game.find(params[:id])
-    team = Team.find(game_params[3])
+    # team = Team.find(game_params[3])
+    performer = game.rounds.last.performer
 
     game.card_flash = game_params[2]
-    team.score += 1
+    performer.turn_score += 1
+    # team.score += 1
 
     game.save!
-    team.save!
+    performer.save!
+    # team.save!
   end
 
   def unflash
@@ -35,7 +38,7 @@ class GamesController < ApplicationController
     game = Game.new(join_code: game_params[1])
     team_a = Team.new(team_letter: "a", game: game, score: 0)
     team_b = Team.new(team_letter: "b", game: game, score: 0)
-    player = Player.new(name: game_params[0], game: game, team: team_a)
+    player = Player.new(name: game_params[0], game: game, team: team_a, turn_score: 0)
 
     game.host = player
 
