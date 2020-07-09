@@ -13,7 +13,7 @@ class PlayersController < ApplicationController
   def create
     # byebug
     game = Game.find_by(join_code: player_params[1])
-    player = Player.new(name: player_params[0], game: game)
+    player = Player.new(name: player_params[0], game: game, turn_score: 0)
 
     if game.teams[0].players.count <= game.teams[1].players.count
       player.team = game.teams[0]
