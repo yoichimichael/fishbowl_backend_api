@@ -23,8 +23,8 @@ class RoundsController < ApplicationController
 
   private
 
-  # def round_params
-  #   params.require(:round).permit(:id)
-  # end
+  def round_params
+    params.require([:submission_ids])
+  end
 
 end
